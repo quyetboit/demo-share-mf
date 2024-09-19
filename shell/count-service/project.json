@@ -1,0 +1,31 @@
+{
+  "name": "count-service",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "count-service/src",
+  "prefix": "shell",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "count-service/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["count-service/**/*.ts", "count-service/**/*.html"]
+      }
+    }
+  }
+}
